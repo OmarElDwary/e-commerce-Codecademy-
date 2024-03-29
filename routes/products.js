@@ -52,6 +52,10 @@ router.delete("/:id", async (req, res) => {
       productID,
     ]);
 
+    if (product.rows.length === 0) {
+      return res.status(404).json({ error: 'Not Found' });
+    }
+
     await pool.query("DELETE FROM products WHERE id = $1", [productID]);
 
     res.status(200).json({ message: "Product Deleted Succesfully" });

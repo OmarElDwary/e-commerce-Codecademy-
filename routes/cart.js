@@ -91,3 +91,5 @@ router.get("/:id", async (req, res) => {
   };
   res.status(200).json(cart);
 });
+
+module.exports = router;
